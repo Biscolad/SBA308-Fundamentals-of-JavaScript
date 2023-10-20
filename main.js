@@ -77,33 +77,43 @@ const CourseInfo = {
   ];
 
 
-  //--------------------SOLUTION----------------------------------------
+
+ //--------------------SOLUTION----------------------------------------
  
-  
-// ANALYZE THE ID OF THE LEARNER FOR WHICH THIS DATA HAS BEEN COLLECTED
-// for (const learner_id in LearnerSubmissions) {
-//   if (learner_id === learner_id);
-//   let average = 0
-//   for (let i=0; i<LearnerSubmissions.learner_id.score; i++) {
-
-
-//   }
-//   average == learner
-//   console.log(LearnerSubmissions[learner_id]);
-// }
-
-
 // DATA VALIDATION
-function getLearnerData (CourseInfo, AssignmentGroup, LearnerSubmissions) {
+function getLearnerData (CourseInfo, AssignmentGroup, [LearnerSubmissions]) {
   if (AssignmentGroup.course_id !== CourseInfo.id) {
     throw new Error("input is invalid!");
+  }
+
+    if (AssignmentGroup.id !== LearnerSubmissions.assignment_id) {
+        throw new Error('input id invalid!');
+    }
+  for (const assignment_id of AssignmentGroup.id) {
+
+
   }
   }
   console.log(getLearnerData);
 
 
 
-// AVERAGE OF ALL LEARNERS' TOTAL, WEIGHTED AVERAGE,
+// TOTAL SCORES BY LEARNER_ID
+let totalScores = {}
+
+for (let i=0; i<LearnerSubmissions.length; i++) {
+
+if (!totalScores[LearnerSubmissions[i].learner_id]) {
+  totalScores[LearnerSubmissions[i].learner_id] = 0
+console.log(totalScores[LearnerSubmissions[i].learner_id]);
+}
+totalScores[LearnerSubmissions[i].learner_id]+=LearnerSubmissions[i].submission.score
+}
+
+console.log(totalScores);
+
+
+// AVERAGE OF OVERALL SCORES
 let overallScores = [];
 let total = 0;
 for (let i=0; i<LearnerSubmissions.length; i++) {
@@ -113,22 +123,9 @@ for (let i=0; i<LearnerSubmissions.length; i++) {
 console.log(total/overallScores.length);
 
 
-// EACH LEARNER'S TOTAL, WEIGHTED AVERAGE,
 
-// learnerScores = [];
-// const learners = {};
-// for (const submission of LearnerSubmissions) {
-//   const learnerId = submission.learner_id;
-//   if (!learners[learnerId]) {
-//     learners[learnerId] = {
-//       id: learnerId,
-//       average: 0,
-    
-//     };
-//   }
 
-// }
-// console.log (learners.average);
+
 
 
 
@@ -158,9 +155,6 @@ console.log(total/overallScores.length);
     
       
 
-  //   if (AssignmentGroup.id !== LearnerSubmissions.assignment_id) {
-  //       throw new Error('input id invalid!');
-  //   }
 
   // }
   
