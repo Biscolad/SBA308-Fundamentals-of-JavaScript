@@ -99,28 +99,31 @@ function getLearnerData (CourseInfo, AssignmentGroup, [LearnerSubmissions]) {
 
 
 // TOTAL SCORES BY LEARNER_ID
-let totalScores = {}
+let learnerScores = {}
+
 
 for (let i=0; i<LearnerSubmissions.length; i++) {
 
-if (!totalScores[LearnerSubmissions[i].learner_id]) {
-  totalScores[LearnerSubmissions[i].learner_id] = 0
-console.log(totalScores[LearnerSubmissions[i].learner_id]);
+if (!learnerScores[LearnerSubmissions[i].learner_id]) {
+  learnerScores[LearnerSubmissions[i].learner_id] = 0
+  
+console.log(learnerScores[LearnerSubmissions[i].learner_id]);
 }
-totalScores[LearnerSubmissions[i].learner_id]+=LearnerSubmissions[i].submission.score
+
+learnerScores[LearnerSubmissions[i].learner_id]+=LearnerSubmissions[i].submission.score
 }
 
-console.log(totalScores);
+console.log(learnerScores);
 
 
-// AVERAGE OF OVERALL SCORES
-let overallScores = [];
+// AVERAGE SCORE OF ALL LEARNERS
+let allScores = [];
 let total = 0;
 for (let i=0; i<LearnerSubmissions.length; i++) {
   total +=LearnerSubmissions[i].submission.score
-  overallScores.push(LearnerSubmissions[i].submission.score)
+  allScores.push(LearnerSubmissions[i].submission.score)
 }
-console.log(total/overallScores.length);
+console.log(total/allScores.length);
 
 
 
