@@ -85,32 +85,27 @@ function getLearnerData (CourseInfo, AssignmentGroup, [LearnerSubmissions]) {
   if (AssignmentGroup.course_id !== CourseInfo.id) {
     throw new Error("input is invalid!");
   }
-
     if (AssignmentGroup.id !== LearnerSubmissions.assignment_id) {
         throw new Error('input id invalid!');
     }
   for (const assignment_id of AssignmentGroup.id) {
-
-
   }
   }
   console.log(getLearnerData);
 
 
 
-// TOTAL SCORES BY LEARNER_ID
+// TOTAL SCORES SORTED BY LEARNER_ID
 let learnerScores = {}
-
 
 for (let i=0; i<LearnerSubmissions.length; i++) {
 
 if (!learnerScores[LearnerSubmissions[i].learner_id]) {
   learnerScores[LearnerSubmissions[i].learner_id] = 0
-  
 console.log(learnerScores[LearnerSubmissions[i].learner_id]);
 }
-
 learnerScores[LearnerSubmissions[i].learner_id]+=LearnerSubmissions[i].submission.score
+
 }
 
 console.log(learnerScores);
@@ -127,7 +122,42 @@ console.log(total/allScores.length);
 
 
 
+// PERCENTAGE SCORES SORTED BY LEARNER_ID
+function learnerPercentage(score, learnerScores) {
+  if (learnerScores === 0) {
+    return 0; 
+  }
+  else {
+    return (score / learnerScores) * 100;
+  }
+}
+console.log(learnerPercentage);
 
+
+//PERCENTAGE OF EACH SCORE PER LEARNER
+const percentage = {};
+
+for (let i = 0; i < LearnerSubmissions.length; i++) {
+  const learner_id = LearnerSubmissions[i].learner_id;
+  const score = LearnerSubmissions[i].submission.score;
+  
+  if (learnerScores[learner_id] > 0) {
+    if (!percentage[learner_id]) {
+      percentage[learner_id] = [];
+    }
+    percentage[learner_id].push((score / learnerScores[learner_id]) * 100);
+  }
+}
+
+console.log(percentage);
+
+
+//CHECK ASSIGNMENT DUE DATE
+// const assignmentDueDate = {};
+// for (let i = 0; i< LearnerSubmissions.length; i++) {
+//   const submitted_at = LearnerSubmissions[i].submission.submitted_at;
+//   if ()
+// }
 
 
 
@@ -157,13 +187,6 @@ console.log(total/allScores.length);
 
     
       
-
-
-  // }
-  
- 
-
-
 
 
 
