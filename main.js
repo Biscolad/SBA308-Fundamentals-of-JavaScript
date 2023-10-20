@@ -75,14 +75,104 @@ const CourseInfo = {
       }
     }
   ];
+
+
+  //--------------------SOLUTION----------------------------------------
+ 
+  
+// ANALYZE THE ID OF THE LEARNER FOR WHICH THIS DATA HAS BEEN COLLECTED
+// for (const learner_id in LearnerSubmissions) {
+//   if (learner_id === learner_id);
+//   let average = 0
+//   for (let i=0; i<LearnerSubmissions.learner_id.score; i++) {
+
+
+//   }
+//   average == learner
+//   console.log(LearnerSubmissions[learner_id]);
+// }
+
+
+// DATA VALIDATION
+function getLearnerData (CourseInfo, AssignmentGroup, LearnerSubmissions) {
+  if (AssignmentGroup.course_id !== CourseInfo.id) {
+    throw new Error("input is invalid!");
+  }
+  }
+  console.log(getLearnerData);
+
+
+
+// AVERAGE OF ALL LEARNERS' TOTAL, WEIGHTED AVERAGE,
+let overallScores = [];
+let total = 0;
+for (let i=0; i<LearnerSubmissions.length; i++) {
+  total +=LearnerSubmissions[i].submission.score
+  overallScores.push(LearnerSubmissions[i].submission.score)
+}
+console.log(total/overallScores.length);
+
+
+// EACH LEARNER'S TOTAL, WEIGHTED AVERAGE,
+
+// learnerScores = [];
+// const learners = {};
+// for (const submission of LearnerSubmissions) {
+//   const learnerId = submission.learner_id;
+//   if (!learners[learnerId]) {
+//     learners[learnerId] = {
+//       id: learnerId,
+//       average: 0,
+    
+//     };
+//   }
+
+// }
+// console.log (learners.average);
+
+
+
+
+   
+
+  
+
+    
+
+   
+    
+
+
+
+
+
+
+
+
+
+
+
   
 
 
+    
+      
+
+  //   if (AssignmentGroup.id !== LearnerSubmissions.assignment_id) {
+  //       throw new Error('input id invalid!');
+  //   }
+
+  // }
+  
+ 
 
 
 
 
 
+
+
+  //-----------------------------------------------------------------------------------------------------------------
 
 //   function getLearnerData(course, ag, submissions) {
 //     // here, we would process this data to achieve the desired result.
